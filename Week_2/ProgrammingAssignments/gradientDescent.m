@@ -21,10 +21,10 @@ for iter = 1:num_iters
 
     predictions = X*theta;
     derivative_1 = (predictions - y);
-    derivative_2 = X * (predictions - y);
+    derivative_2 = (predictions - y) .* X(:,2);
 
-    theta(1) = theta(1)- (alpha * (1/m) * sum(derivative_1));
-    theta(2) = theta(2)- (alpha * (1/m) * sum(derivative_2));
+    theta(1) = theta(1) - (alpha * (1/m) * sum(derivative_1));
+    theta(2) = theta(2) - (alpha * (1/m) * sum(derivative_2));
 
 
     % ============================================================
