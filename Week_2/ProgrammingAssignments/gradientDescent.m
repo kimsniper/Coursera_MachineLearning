@@ -19,12 +19,11 @@ for iter = 1:num_iters
     %       of the cost function (computeCost) and gradient here.
     %
 
-    predictions = X*theta;
-    derivative_1 = (predictions - y);
-    derivative_2 = (predictions - y) .* X(:,2);
+    pderivative_1 = (1/m) * sum((X*theta) - y);
+    pderivative_2 = (1/m) * sum(((X*theta) - y) .*X(:,2));
 
-    theta(1) = theta(1) - (alpha * (1/m) * sum(derivative_1));
-    theta(2) = theta(2) - (alpha * (1/m) * sum(derivative_2));
+    theta(1) = theta(1) - (alpha * pderivative_1);
+    theta(2) = theta(2) - (alpha * pderivative_2);
 
 
     % ============================================================
